@@ -7,6 +7,7 @@ import {
 } from "@kinde-oss/kinde-auth-nextjs/components";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import { AuthProvider } from "../components/provider";
+import { handleTokenRefresh } from "./action";
 
 export const metadata = {
   title: "Kinde Auth",
@@ -21,6 +22,9 @@ export default async function RootLayout({
   const { isAuthenticated, getUser } = getKindeServerSession();
   const user = await getUser();
   const isAuth = await isAuthenticated();
+
+  // KINDE - When handleTokenRefresh is called within a server component, it always returns null.
+  await handleTokenRefresh();
   return (
     <html lang="en">
       <body>

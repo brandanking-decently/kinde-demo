@@ -277,3 +277,11 @@ a {
     transform: translate(32.00002px, 32px) rotate(36deg);
   }
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
